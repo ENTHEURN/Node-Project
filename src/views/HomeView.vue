@@ -1,18 +1,45 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <TableView />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import TableView from "@/components/TableView.vue";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
-    HelloWorld
-  }
-}
+    TableView,
+  },
+  data() {
+    return {
+      users: [],
+    };
+  },
+  mounted() {
+    this.getUsers();
+  },
+  methods: {
+    getUsers() {
+      this.$axios
+        .get("/users")
+        .then((response) => {
+          this.users = response.data;
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+  },
+};
 </script>
+
+<style scoped>
+.logo {
+  width: 130px;
+}
+
+</style>
