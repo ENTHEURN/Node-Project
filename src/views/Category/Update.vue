@@ -1,16 +1,18 @@
 <template>
-  <div class="container mx-auto mt-4">
-    <h1 class="mb-4 text-2xl font-bold">Edit Category</h1>
-    <form @submit.prevent="updateCategory" class="bg-white border border-gray-300 rounded-md shadow-sm p-4">
+  <div class="container mx-auto my-8">
+    <h1 class="text-2xl font-bold mb-4">Update Category</h1>
+    <form @submit.prevent="updateCategory" class="bg-white shadow-lg border border-gray-300 rounded-md rounded px-8 pt-6 pb-8 mb-4 max-w-md mx-auto">
       <div class="mb-4">
-        <label for="category-name" class="block font-medium text-gray-700 mb-2">Name</label>
-        <input type="text" class="w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" id="category-name" v-model="category.name" required />
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="category-name" type="text" placeholder="Enter category name" v-model="category.name" required>
       </div>
       <div class="mb-4">
-        <label for="category-description" class="block font-medium text-gray-700 mb-2">Description</label>
-        <textarea class="w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" id="category-description" v-model="category.description" required></textarea>
+        <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="category-description" placeholder="Enter category description" v-model="category.description" required></textarea>
       </div>
-      <button type="submit" class="inline-block px-4 py-2 bg-blue-500 text-white font-medium rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Update Category</button>
+      <div class="flex items-center justify-between">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+          Update Category
+        </button>
+      </div>
     </form>
   </div>
 </template>

@@ -4,7 +4,6 @@ import HomeView from '../views/HomeView.vue'
 import ListCategory from '@/views/Category/List.vue';
 import CreateCategory from '@/views/Category/Create.vue';
 import EditCategory from '@/views/Category/Update.vue';
-import ShowCategory from '@/views/Category/Show.vue';
 
 const routes = [
   {
@@ -34,12 +33,6 @@ const routes = [
     path: '/categories/edit/:id',
     name: 'edit-category',
     component: EditCategory,
-    props: true
-  },
-  {
-    path: '/categories/show/:id',
-    name: 'show-category',
-    component: ShowCategory,
     props: true
   },
 ]

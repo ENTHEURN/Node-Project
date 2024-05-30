@@ -1,22 +1,25 @@
 <template>
-  <div class="container mx-auto mt-4">
-    <h1 class="mb-4 text-2xl font-bold">Create Category</h1>
-    <form @submit.prevent="createCategory" class="space-y-4">
-      <div>
-        <label for="category-name" class="block mb-2 font-medium">Name</label>
-        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="category-name" v-model="category.name" required />
+  <div class="container mx-auto my-8">
+    <h1 class="text-2xl font-bold mb-4">Create Category</h1>
+    <form @submit.prevent="createCategory" class="bg-white shadow-lg border border-gray-300 rounded-md rounded px-8 pt-6 pb-8 mb-4 max-w-md mx-auto">
+      <div class="mb-4">
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="category-name" type="text" placeholder="Enter category name" v-model="category.name" required>
       </div>
-      <div>
-        <label for="category-description" class="block mb-2 font-medium">Description</label>
-        <textarea class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="category-description" v-model="category.description" required></textarea>
+      <div class="mb-4">
+        <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="category-description" placeholder="Enter category description" v-model="category.description" required></textarea>
       </div>
-      <button type="submit" class="px-4 py-2 font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Create Category</button>
+      <div class="flex items-center justify-between">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+          Create Category
+        </button>
+      </div>
     </form>
   </div>
 </template>
-  <script>
-  import axios from 'axios';
-  
+
+
+<script>
+
   export default {
     name:'create-category',
     data() {
@@ -30,7 +33,7 @@
     methods: {
       async createCategory() {
         try {
-          const response = await axios.post('http://127.0.0.1:8000/api/category/create', this.category);
+          const response = await this.$axios.post('category/create', this.category);
           if (response.data.success) {
             this.$router.push('/categories');
           }
